@@ -1,15 +1,26 @@
 import React from 'react';
+import { StatusBar } from 'react-native';
 
 import {
  Container,
- Title
+ Header
 } from './styles';
+
+import Logo from '../../assets/logo.svg';
 
 export function Home() {
  return (
- <Container>
-  <Title>Home</Title>
+  <Container>
+    <StatusBar
+      barStyle="light-content"
+      translucent
+      backgroundColor="transparent"
+    />
+    <Header>
+      <Logo />
 
- </Container>
+
+    </Header>
+  </Container>
  );
 }
