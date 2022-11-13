@@ -10,8 +10,30 @@ import {
 } from './styles';
 
 import Logo from '../../assets/logo.svg';
+import { Car } from '../../components/Car';
 
 export function Home() {
+
+  const carData = {
+    brand: 'Audi',
+    name: 'RS 5 Coupé',
+    rent: {
+      period: 'Ao dia',
+      price: 120
+    },
+    thumbnail: 'https://freepngimg.com/thumb/audi/35227-5-audi-rs5-red.png'
+  }
+
+  const carDataTwo = {
+    brand: 'Ferrari',
+    name: 'Portofino',
+    rent: {
+      period: 'Ao dia',
+      price: 320
+    },
+    thumbnail: 'https://images0.cardekho.com/images/car-images/large/Ferrari/Ferrari-Portofino/6172/047.jpg'
+  }
+
  return (
   <Container>
     <StatusBar
@@ -30,6 +52,9 @@ export function Home() {
         </TotalCars>
       </HeaderContent>
    </Header>
+
+   <Car data={carData}/>
+   <Car data={carDataTwo}/>
   </Container>
  );
 }
