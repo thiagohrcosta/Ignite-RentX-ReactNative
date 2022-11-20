@@ -1,0 +1,107 @@
+import React from 'react';
+
+import { BackButton } from '../../components/BackButton';
+import { ImageSlider } from '../../components/ImageSlider';
+import { Acessory } from '../../components/Acessory';
+
+import speedSvg from '../../assets/speed.svg';
+import accelerationSvg from '../../assets/acceleration.svg';
+import forceSvg from '../../assets/force.svg';
+import gasolineSvg from '../../assets/gasoline.svg';
+import exchangeSvg from '../../assets/exchange.svg';
+import peopleSvg from '../../assets/people.svg';
+
+import { Feather } from '@expo/vector-icons';
+
+import {
+  Container,
+  Header,
+  CarImages,
+  Content,
+  Details,
+  Description,
+  Brand,
+  Name,
+  Rent,
+  Period,
+  Price,
+  Accessories,
+  Footer,
+  RentalPeriod,
+  CalendarIcon,
+  DateInfo,
+  DateTitle,
+  DateValue
+} from './styles';
+import { Button } from '../../components/Button/index.';
+import { RFValue } from 'react-native-responsive-fontsize';
+import theme from '../../styles/theme';
+import { useTheme } from 'styled-components';
+
+export function SchedulingDetails() {
+  const theme = useTheme();
+
+  return (
+  <Container>
+      <Header>
+        <BackButton onPress={() => {}}/>
+      </Header>
+      <CarImages>
+        <ImageSlider
+          imagesUrl={['https://freepngimg.com/thumb/audi/35227-5-audi-rs5-red.png']}
+        />
+      </CarImages>
+      <Content>
+        <Details>
+          <Description>
+            <Brand>Lamborghini</Brand>
+            <Name>Huracan</Name>
+          </Description>
+
+          <Rent>
+            <Period>Ao dia</Period>
+            <Price>R$ 580</Price>
+          </Rent>
+        </Details>
+        <Accessories>
+          <Acessory name="380Km/h" icon={speedSvg}/>
+          <Acessory name="3.2s" icon={accelerationSvg}/>
+          <Acessory name="800 HP" icon={forceSvg}/>
+          <Acessory name="Gasolina" icon={gasolineSvg}/>
+          <Acessory name="Auto" icon={exchangeSvg}/>
+          <Acessory name="2 pessoas" icon={peopleSvg}/>
+        </Accessories>
+        <RentalPeriod>
+          <CalendarIcon>
+            <Feather
+              name="calendar"
+              size={RFValue(24)}
+              color={theme.colors.shape}
+            />
+          </CalendarIcon>
+          <DateInfo>
+            <DateTitle>DE</DateTitle>
+            <DateValue>18/06//2022</DateValue>
+          </DateInfo>
+
+          <Feather
+              name="chevron-right"
+              size={RFValue(10)}
+              color={theme.colors.text}
+            />
+
+          <DateInfo>
+            <DateTitle>ATÉ</DateTitle>
+            <DateValue>28/06//2022</DateValue>
+          </DateInfo>
+
+        </RentalPeriod>
+      </Content>
+      <Footer>
+        <Button
+          title="Confirmar"
+        />
+      </Footer>
+  </Container>
+  );
+}
