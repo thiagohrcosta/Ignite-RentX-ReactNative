@@ -31,7 +31,12 @@ import {
   CalendarIcon,
   DateInfo,
   DateTitle,
-  DateValue
+  DateValue,
+  RentalPrice,
+  RentalPriceLabel,
+  RentalPriceDetails,
+  RentalPriceQuota,
+  RentalPriceTotal,
 } from './styles';
 import { Button } from '../../components/Button/index.';
 import { RFValue } from 'react-native-responsive-fontsize';
@@ -96,6 +101,14 @@ export function SchedulingDetails() {
           </DateInfo>
 
         </RentalPeriod>
+
+        <RentalPrice>
+          <RentalPriceLabel>TOTAL</RentalPriceLabel>
+          <RentalPriceDetails>
+            <RentalPriceQuota>R$ 580 x3 diárias</RentalPriceQuota>
+            <RentalPriceTotal>R$ 2.900</RentalPriceTotal>
+          </RentalPriceDetails>
+        </RentalPrice>
       </Content>
       <Footer>
         <Button
