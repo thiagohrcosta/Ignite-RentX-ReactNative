@@ -5,7 +5,7 @@ import { RFValue } from 'react-native-responsive-fontsize';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 interface ButtonProps extends RectButtonProps {
-  color: string;
+  color?: string
 }
 
 export const Container = styled(RectButton)<ButtonProps>`
@@ -13,7 +13,7 @@ export const Container = styled(RectButton)<ButtonProps>`
   padding: 19px;
   align-items: center;
   justify-content: center;
-  background-color: ${({ color, theme }) => color ? color: theme.colors.main};
+  background-color: ${({ color }) => color};
 
  `;
 
