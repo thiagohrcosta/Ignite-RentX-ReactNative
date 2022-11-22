@@ -76,6 +76,7 @@ export function CarDetails() {
     <Footer>
       <Button
         title="Confirmar"
+        onPress={handleConfirmRental}
       />
     </Footer>
   </Container>

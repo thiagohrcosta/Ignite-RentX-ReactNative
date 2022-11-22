@@ -9,17 +9,21 @@ import {
 interface Props {
   title: string;
   color?:string;
+  onPress: () => void;
 }
 
 export function Button({
   title,
   color,
-  ...rest
+  onPress
 }: Props) {
   const theme = useTheme();
- return (
- <Container {...rest} color={color ? color : theme.colors.main}>
-  <Title>{title}</Title>
- </Container>
- );
+  return (
+    <Container
+      color={color ? color : theme.colors.main}
+      onPress={onPress}
+    >
+    <Title>{title}</Title>
+    </Container>
+  );
 }
