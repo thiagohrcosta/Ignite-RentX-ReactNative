@@ -9,15 +9,20 @@ import {
   Content,
   Title,
   Message,
+  Footer,
+  LogoWrapper
 } from './styles';
+import { ConfirmButton } from '../../components/ConfirmButton';
 
 export function SchedulingComplete() {
   const width = useWindowDimensions().width;
   return (
     <Container>
-      <LogoSvg
-        width={width}
-      />
+      <LogoWrapper>
+        <LogoSvg
+          width={width}
+        />
+      </LogoWrapper>
 
       <Content>
         <DoneSvg width={80} height={80} />
@@ -29,6 +34,12 @@ export function SchedulingComplete() {
           pegar o seu automóvel.
         </Message>
       </Content>
+
+      <Footer>
+        <ConfirmButton
+          title="OK"
+        />
+      </Footer>
 
     </Container>
   );

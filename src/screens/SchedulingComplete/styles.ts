@@ -8,10 +8,19 @@ export const Container = styled.View`
   padding-top: 96px;
  `;
 
+export const LogoWrapper = styled.View`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+`;
+
+
 export const Content = styled.View`
   flex: 1;
   justify-content: center;
   align-items: center;
+
+  padding-bottom: 80px;
 `;
 
 export const Title = styled.Text`
@@ -29,4 +38,11 @@ export const Message = styled.Text`
   text-align: center;
   line-height: ${RFValue(25)}px;
   margin-top: 16px;
+`;
+
+export const Footer = styled.View`
+  width: 100%;
+  align-items: center;
+
+  margin: 80px 0;
 `;
