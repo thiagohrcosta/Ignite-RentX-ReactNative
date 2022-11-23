@@ -2,6 +2,7 @@ import React from 'react';
 import { StatusBar } from 'react-native';
 import { RFValue } from 'react-native-responsive-fontsize';
 
+import { useNavigation } from '@react-navigation/native'
 import {
  Container,
  Header,
@@ -14,6 +15,7 @@ import Logo from '../../assets/logo.svg';
 import { Car } from '../../components/Car';
 
 export function Home() {
+  const navigation = useNavigation();
 
   const carData = {
     brand: 'Audi',
@@ -35,30 +37,34 @@ export function Home() {
     thumbnail: 'https://images0.cardekho.com/images/car-images/large/Ferrari/Ferrari-Portofino/6172/047.jpg'
   }
 
- return (
-  <Container>
-    <StatusBar
-      barStyle="light-content"
-      translucent
-      backgroundColor="transparent"
-    />
-      <Header>
-        <HeaderContent>
-          <Logo
-            width={RFValue(108)}
-            height={RFValue(12)}
-          />
-          <TotalCars>
-            Total de 12 carros
-          </TotalCars>
-        </HeaderContent>
-    </Header>
+  function handleCarDetails() {
+    navigation.navigate('CarDetails');
+  }
 
-    <CarList
-      data={[1, 2, 3, 4, 5, 6, 7]}
-      keyExtractor={item => String(item)}
-      keyExtractor={({ item }) => <Car data={carData} />}
-    />
-  </Container>
- );
+  return (
+    <Container>
+      <StatusBar
+        barStyle="light-content"
+        translucent
+        backgroundColor="transparent"
+      />
+        <Header>
+          <HeaderContent>
+            <Logo
+              width={RFValue(108)}
+              height={RFValue(12)}
+            />
+            <TotalCars>
+              Total de 12 carros
+            </TotalCars>
+          </HeaderContent>
+      </Header>
+
+      <CarList
+        data={[1, 2, 3, 4, 5, 6, 7]}
+        keyExtractor={item => String(item)}
+        renderItem={({ item }) => <Car data={carData} onPress={handleCarDetails} />}
+      />
+    </Container>
+  );
 }
