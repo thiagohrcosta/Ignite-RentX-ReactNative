@@ -73,7 +73,7 @@ export function Home() {
       { loading ? <Load /> :
         <CarList
         data={cars}
-        keyExtractor={item => item.id}
+        keyExtractor={item => String(item.id)}
         renderItem={({ item }) => <Car data={item} onPress={handleCarDetails} />
       }
       />
