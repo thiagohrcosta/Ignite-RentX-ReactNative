@@ -41,6 +41,8 @@ import { useTheme } from 'styled-components';
 import { getAccessoryIcon } from '../../utils/getAccessoryIcon';
 import { getPlataformDate } from '../../utils/getPlataformDate';
 import { format } from 'date-fns';
+import { api } from '../../services/api';
+import { Alert } from 'react-native';
 
 interface Params {
   car: CarDTO;
@@ -60,8 +62,22 @@ export function SchedulingDetails() {
   const route = useRoute();
   const { car, dates } = route.params as Params;
 
-  function handleConfirmRental() {
-    navigation.navigate('SchedulingComplete');
+  const rentalTotal = Number(dates.length * car.rent.price)
+
+  async function handleConfirmRental() {
+    const scheduleByCar = await api.get(`/schedules_bycars/${car.id}`);
+
+    const unavailable_dates = [
+      ...scheduleByCar.data.unavailable_dates,
+      ...dates,
+    ];
+
+    api.put(`/schedules_bycars/${car.id}`, {
+      id: car.id,
+      unavailable_dates,
+    })
+    .then (() => navigation.navigate('SchedulingComplete'))
+    .catch(() => Alert.alert('Não foi possível confirmar o agendamento!'))
   }
 
   function handleBack() {
@@ -137,8 +153,8 @@ export function SchedulingDetails() {
         <RentalPrice>
           <RentalPriceLabel>TOTAL</RentalPriceLabel>
           <RentalPriceDetails>
-            <RentalPriceQuota>R$ 580 x3 diárias</RentalPriceQuota>
-            <RentalPriceTotal>R$ 2.900</RentalPriceTotal>
+            <RentalPriceQuota>{`R$ ${car.rent.price} x${dates.length} diárias`}</RentalPriceQuota>
+            <RentalPriceTotal>{rentalTotal}</RentalPriceTotal>
           </RentalPriceDetails>
         </RentalPrice>
       </Content>
